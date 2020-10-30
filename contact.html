@@ -5,6 +5,7 @@
 <!-- Mirrored from slimhamdi.net/tunis/dark/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 28 Oct 2020 04:41:19 GMT -->
 <head>
     <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Contact -  Abbas am</title>
     <link rel="icon" href="img/unnamed.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -176,7 +177,7 @@
             <!-- Left Side Ends -->
             <!-- Contact Form Starts -->
             <div class="col-12 col-lg-8">
-                <form class="contactgform" method="post" action="https://script.google.com/macros/s/AKfycbyU7f2CIuMZN81hpflfBJaNWVC11x3ikNQ-DCXSPYqLrFt18Hc/exec">
+                <form class="contactgform" id="submit-form" action="">
                     <div class="contactform">
                         <div class="row">
                             <div class="col-12 col-md-4">
@@ -199,6 +200,25 @@
                     </div>
                 </form>
             </div>
+            <script>
+                $("#submit-form").submit((e)=>{
+                    e.preventDefault()
+                    $.ajax({
+                        url:"https://script.google.com/macros/s/AKfycbyPHdYqqVIVjYLOo7cFCcWw7qa2JuuzeJGqP-u52Q/exec",
+                        data:$("#submit-form").serialize(),
+                        method:"post",
+                        success:function (response){
+                            alert("Form submitted successfully")
+                            window.location.reload()
+                            //window.location.href="https://google.com"
+                        },
+                        error:function (err){
+                            alert("Something Error")
+            
+                        }
+                    })
+                })
+            </script>
             <!-- Contact Form Ends -->
         </div>
     </div>
